@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<title>Client Contacts</title>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <title>Insert title here</title>
 <!-- Latest compiled and minified CSS -->
@@ -23,10 +24,10 @@
 			<table border="1" class="table table-striped table-bordered" ng-init="cargar()">
 				<thead><tr><th>Nombre</th><th>Email</th><th>Edad</th><th></th></tr></thead>
 				<tbody><tr ng-repeat="r in contactos">
-					<td>{{r.nombre}}</td>
-					<td>{{r.email}}</td>
-					<td>{{r.edad}}</td>
-					<td><a href="#" ng-click="eliminar(r.idContacto)">Eliminar</a></td>
+					<td>{{r.name}}</td>
+					<td>{{r.mail}}</td>
+					<td>{{r.age}}</td>
+					<td><a href="#" ng-click="eliminar(r.id)">Eliminar</a></td>
 				</tr>
 			</tbody>
 			</table>
@@ -40,14 +41,14 @@
 		app.controller("comunicacionController",function($scope,$http){
 			$scope.contactos=[];	
 			$scope.cargar=function(){			
-				let url="http://localhost:8080/contactos";
+				let url="http://localhost:8080/contacts";
 				$http.get(url).then(function(res){
 					$scope.contactos=res.data;			
 				});
 			}
 			$scope.eliminar=function(id){
 				
-				let url="http://localhost:8080/contactos";
+				let url="http://localhost:8080/contacts";
 				$http({method:"DELETE",url:url+"/"+id}).then(function(res){
 					$scope.cargar();			
 				});

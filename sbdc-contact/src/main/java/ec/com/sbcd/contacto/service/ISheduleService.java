@@ -15,4 +15,6 @@ public interface ISheduleService {
     Boolean deleteContact(Integer id);
 
     ContactEntity findContact(Integer id);
+
+    void exampleAsync();
 }

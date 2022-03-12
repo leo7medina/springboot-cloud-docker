@@ -1,9 +1,12 @@
 package ec.com.sbcd.contacto.controller;
 
+import javax.validation.Valid;
 import ec.com.sbcd.contacto.entity.ContactEntity;
+import ec.com.sbcd.contacto.exceptions.SDCDException;
 import ec.com.sbcd.contacto.service.ISheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -33,7 +36,10 @@ public class SheduleController {
     }
 
     @PostMapping("contact")
-    public void saveContact(@RequestBody ContactEntity contactEntity) throws Exception{
+    public void saveContact(@RequestBody @Valid ContactEntity contactEntity, BindingResult result) throws Exception{
+        if (result.hasErrors()) {
+            throw new SDCDException("Valores nulos en los parametros enviados, por favor verifique.");
+        }
         sheduleSerive.addContact(contactEntity);
     }
 
@@ -42,8 +48,13 @@ public class SheduleController {
         sheduleSerive.updateContact(contactEntity);
     }
 
-    @DeleteMapping(value = "contact/{id}")
+    @DeleteMapping(value = "contacts/{id}")
     public void deleteById(@PathVariable("id") Integer id) {
         sheduleSerive.deleteContact(id);
+    }
+
+    @PostMapping(value = "exampleAsync")
+    public void exampleAsync() {
+
     }
 }
