@@ -1,21 +1,21 @@
-package ec.com.sbcd.contacto;
+package ec.com.server.eureka;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 import java.util.Objects;
 
 @Slf4j
-@SpringBootApplication(scanBasePackages = {"ec.com.sbcd.contacto"})
-public class SbcdContactosRootApplication {
+@EnableEurekaServer
+@SpringBootApplication
+public class ServerEurekaApplication {
 
     public static void main(String[] args) {
         try {
-            SpringApplication.run(SbcdContactosRootApplication.class, args);
+            SpringApplication.run(ServerEurekaApplication.class, args);
             log.info("*********************************** Inicio de sistema ******************************************");
         } catch(Exception throwable) {
             if (!Objects.equals(throwable.getClass().getName(), "org.springframework.boot.devtools.restart.SilentExitExceptionHandler$SilentExitException")
@@ -25,11 +25,6 @@ public class SbcdContactosRootApplication {
                 log.error("Root Cause: " + ExceptionUtils.getRootCause(throwable).toString());
             }
         }
-    }
-
-    @Bean
-    public RestTemplate template() {
-        return new RestTemplate();
     }
 
 }
