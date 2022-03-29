@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: server-zuul
+server:
+  port: 7000
+zuul:
+  routes:
+    serv-vuelos:
+      path: /svuelos/**
+      serviceId: api-vuelos
+    serv-hoteles:
+      path: /shoteles/**
+      serviceId: api-hoteles
+    serv-reservas:
+      path: /sreservas/**
+      serviceId: api-reservas
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

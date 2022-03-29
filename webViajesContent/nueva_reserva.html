@@ -80,23 +80,23 @@
 			$scope.mostrarTabla=true;			
 			$scope.cargarHoteles=function(){
 				
-				let url = "http://localhost:8000/hoteles";
-				//let url = "http://localhost:7000/shoteles/hoteles";
+				//let url = "http://localhost:8000/hoteles";
+				let url = "http://localhost:7000/shoteles/hoteles";
 				$http.get(url).then(function(res){
 					$scope.hoteles=res.data;
 								
 				});
 			}
 			$scope.cargarVuelos=function(){				
-				let url = "http://localhost:9000/vuelos/1";	
-				//let url = "http://localhost:7000/svuelos/vuelos/1";	
+				//let url = "http://localhost:9000/vuelos/1";	
+				let url = "http://localhost:7000/svuelos/vuelos/1";	
 				$http.get(url).then(function(res){
 					$scope.vuelos=res.data;								
 				});
 			}
 			$scope.reservar=function(){
-				let url="http://localhost:10000/reserva/1";
-				//let url="http://localhost:7000/sreservas/reserva/1";
+				//let url="http://localhost:10000/reserva/1";
+				let url="http://localhost:7000/sreservas/reserva/1";
 				let ob=new Object();
 				ob.nombre=$scope.nombre;
 				ob.cedula=$scope.cedula;
