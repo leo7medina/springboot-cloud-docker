@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: api-reservas
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/viajes?serverTimezone=UTC
@@ -12,7 +10,7 @@ spring:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 server:
-  port: 10000
+  port: 9000
 #config del servidor
 eureka:
   client:
